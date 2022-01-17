@@ -1,7 +1,7 @@
 Plant.destroy_all
 Plant.reset_pk_sequence
-PlantParent.destroy_all
-PlantParent.reset_pk_sequence
+Person.destroy_all
+Person.reset_pk_sequence
 PlantParenthood.destroy_all
 PlantParenthood.reset_pk_sequence
 Category.destroy_all
@@ -16,7 +16,6 @@ basil = Plant.create(species: "basil the herb", bought: "20200610", color: "gree
 PlantCategory.create(plant_id: basil.id, category_id: 1)
 PlantCategory.create(plant_id: basil.id, category_id: 2)
 PlantCategory.create(plant_id: basil.id, category_id: 3)
-
 corn_tree = Plant.create(species: "Corn Tree", bought: "20170203", color: "green", fussy: false)
 prayer_plant = Plant.create(species: "Prayer plant", bought: "20190815", color: "purple", fussy: false)
 cactus_1 = Plant.create(species: "Cactus", bought: "20200110", color: "ugly green", fussy: false)
@@ -32,12 +31,12 @@ cactus_2 = Plant.create(species: "Cactus", bought: "20200517", color: "green", f
 
 # binding.pry
 
-joel = PlantParent.create(name: "Joel", responsible: false, age: 10_000)
-sylwia = PlantParent.create(name: "Sylwia", responsible: true, age: 31)
+joel = Person.create(name: "Joel", responsible: false, age: 10_000)
+sylwia = Person.create(name: "Sylwia", responsible: true, age: 31)
 
-# PlantParenthood.create(plant_id: prayer_plant.id, person_id: joel.id, affection:0)
-# PlantParenthood.create(plant_id: basil.id, plant_parent_id: joel.id, affection:1)
-# PlantParenthood.create(plant_id: basil.id, plant_parent_id: sylwia.id, affection:10)
-# PlantParenthood.create(plant_id: corn_tree.id, plant_parent_id: sylwia.id, affection:10)
+PlantParenthood.create(plant_id: prayer_plant.id, person_id: joel.id, affection:0)
+PlantParenthood.create(plant_id: basil.id, person_id: joel.id, affection:1)
+PlantParenthood.create(plant_id: basil.id, person_id: sylwia.id, affection:10)
+PlantParenthood.create(plant_id: corn_tree.id, person_id: sylwia.id, affection:10)
 
 puts "🌱 🌱 🌱  SEEDED 🌱 🌱 🌱 🌱 "
